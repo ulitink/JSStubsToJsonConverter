@@ -8,8 +8,6 @@
  *   http://www.w3.org/TR/2004/REC-DOM-Level-3-LS-20040407/ls.idl
  */
 
-module ls {
-
   typedef   Object LSInputStream;
 
   typedef   Object LSOutputStream;
@@ -17,12 +15,6 @@ module ls {
   typedef   Object LSReader;
 
   typedef   Object LSWriter;
-
-  typedef dom::DOMConfiguration DOMConfiguration;
-  typedef dom::DOMException DOMException;
-  typedef dom::Node Node;
-  typedef dom::Document Document;
-  typedef dom::Element Element;
 
   exception LSException {
     // LSExceptionCode
@@ -137,19 +129,18 @@ module ls {
              attribute DOMString?      encoding;
   };
 
-  interface LSProgressEvent : events::Event {
+  interface LSProgressEvent : Event {
     readonly attribute LSInput         input;
     readonly attribute unsigned long   position;
     readonly attribute unsigned long   totalSize;
   };
 
-  interface LSLoadEvent : events::Event {
+  interface LSLoadEvent : Event {
     readonly attribute Document        newDocument;
     readonly attribute LSInput         input;
   };
 
   [Callback]
-  interface LSSerializerFilter : traversal::NodeFilter {
+  interface LSSerializerFilter : NodeFilter {
     readonly attribute unsigned long   whatToShow;
   };
-};

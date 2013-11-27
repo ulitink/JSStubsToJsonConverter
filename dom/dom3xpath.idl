@@ -8,14 +8,6 @@
  *   http://www.w3.org/TR/2004/NOTE-DOM-Level-3-XPath-20040226/xpath.idl
  */
 
-module xpath {
-
-  typedef dom::Node Node;
-  typedef dom::DOMObject DOMObject;
-  typedef dom::Element Element;
-  typedef dom::Document Document;
-  typedef dom::DOMException DOMException;
-
   exception XPathException {
     // XPathExceptionCode
     const unsigned short      INVALID_EXPRESSION_ERR         = 51;
@@ -46,7 +38,7 @@ module xpath {
                                 in unsigned short type, 
                                 in DOMObject result)
                                         raises(XPathException, 
-                                               dom::DOMException);
+                                               DOMException);
   };
 
   [Callback]
@@ -94,4 +86,3 @@ module xpath {
 
     readonly attribute Element         ownerElement;
   };
-};

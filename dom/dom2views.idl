@@ -8,10 +8,6 @@
  *   http://www.w3.org/TR/2000/REC-DOM-Level-2-Views-20001113/views.idl
  */
 
-module views {
-
-  typedef dom::Document Document;
-
   // Introduced in DOM Level 2:
   [PrototypeRoot]
   interface AbstractView {
@@ -24,4 +20,3 @@ module views {
   };
 
   Document implements DocumentView;
-};

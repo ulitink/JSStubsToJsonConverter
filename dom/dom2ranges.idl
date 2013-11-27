@@ -8,13 +8,6 @@
  *   http://www.w3.org/TR/2000/REC-DOM-Level-2-Traversal-Range-20001113/ranges.idl
  */
 
-module ranges {
-
-  typedef dom::Node Node;
-  typedef dom::Document Document;
-  typedef dom::DOMException DOMException;
-  typedef dom::DocumentFragment DocumentFragment;
-
   // Introduced in DOM Level 2:
   exception RangeException {
     // RangeExceptionCode
@@ -102,4 +95,3 @@ module ranges {
   };
 
   Document implements DocumentRange;
-};

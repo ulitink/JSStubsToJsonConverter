@@ -8,13 +8,6 @@
  *   http://www.w3.org/TR/2000/REC-DOM-Level-2-Traversal-Range-20001113/traversal.idl
  */
 
-module traversal {
-
-  typedef dom::Node Node;
-  typedef dom::DOMException DOMException;
-
-  interface NodeFilter;
-
   // Introduced in DOM Level 2:
   interface NodeIterator {
     readonly attribute Node             root;
@@ -88,4 +81,4 @@ module traversal {
   };
 
   Document implements DocumentTraversal;
-};
+

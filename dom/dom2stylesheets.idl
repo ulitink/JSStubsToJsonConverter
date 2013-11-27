@@ -8,12 +8,6 @@
  *   http://www.w3.org/TR/2000/REC-DOM-Level-2-Style-20001113/stylesheets.idl
  */
 
-module stylesheets {
-
-  typedef dom::Node Node;
-  typedef dom::Document Document;
-  typedef dom::ProcessingInstruction ProcessingInstruction;
-  typedef dom::DOMException DOMException;
 
   // Introduced in DOM Level 2:
   [PrototypeRoot]
@@ -60,4 +54,3 @@ module stylesheets {
   };
 
   Document implements DocumentStyle;
-};

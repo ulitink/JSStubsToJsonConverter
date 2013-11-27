@@ -8,12 +8,6 @@
  *   http://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113/events.idl
  */
 
-module events {
-
-  typedef dom::DOMTimeStamp DOMTimeStamp;
-  typedef dom::Node Node;
-  typedef dom::DOMException DOMException;
-
   // Introduced in DOM Level 2:
   exception EventException {
     // EventExceptionCode
@@ -76,12 +70,12 @@ module events {
 
   // Introduced in DOM Level 2:
   interface UIEvent : Event {
-    readonly attribute views::AbstractView  view;
+    readonly attribute AbstractView  view;
     readonly attribute long             detail;
     void               initUIEvent(in DOMString typeArg, 
                                    in boolean canBubbleArg, 
                                    in boolean cancelableArg, 
-                                   in views::AbstractView viewArg, 
+                                   in AbstractView viewArg,
                                    in long detailArg);
   };
 
@@ -100,7 +94,7 @@ module events {
     void               initMouseEvent(in DOMString typeArg, 
                                       in boolean canBubbleArg, 
                                       in boolean cancelableArg, 
-                                      in views::AbstractView viewArg, 
+                                      in AbstractView viewArg,
                                       in long detailArg, 
                                       in long screenXArg, 
                                       in long screenYArg, 
@@ -136,4 +130,3 @@ module events {
                                          in DOMString? attrNameArg, 
                                          in unsigned short attrChangeArg);
   };
-};

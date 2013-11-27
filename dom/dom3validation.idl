@@ -8,15 +8,6 @@
  *   http://www.w3.org/TR/2004/REC-DOM-Level-3-Val-20040127/validation.idl
  */
 
-module validation {
-
-  typedef dom::DOMStringList DOMStringList;
-  typedef dom::Node Node;
-  typedef dom::NameList NameList;
-  typedef dom::Attr Attr;
-  typedef dom::DOMConfiguration DOMConfiguration;
-  typedef dom::DOMException DOMException;
-
   exception ExceptionVAL {
     // ExceptionVALCode
     const unsigned short      NO_SCHEMA_AVAILABLE_ERR        = 71;
@@ -106,4 +97,3 @@ module validation {
     NameList           getDefinedElements(in DOMString? namespaceURI);
     unsigned short     validateDocument();
   };
-};

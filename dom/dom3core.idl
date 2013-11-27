@@ -8,8 +8,6 @@
  *   http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/idl/dom.idl
  */
 
-module dom {
-
   typedef   unsigned long long DOMTimeStamp;
 
   typedef   any DOMUserData;
@@ -521,4 +519,3 @@ module dom {
                                   in DOMString qualifiedName)
                                         raises(DOMException);
   };
-};
