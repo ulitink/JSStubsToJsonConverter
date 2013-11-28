@@ -7,7 +7,7 @@
  *
  *   http://www.w3.org/TR/2004/REC-DOM-Level-3-LS-20040407/ls.idl
  */
-
+/*
   typedef   Object LSInputStream;
 
   typedef   Object LSOutputStream;
@@ -144,3 +144,4 @@
   interface LSSerializerFilter : NodeFilter {
     readonly attribute unsigned long   whatToShow;
   };
+*/
