@@ -5,7 +5,7 @@
 
 var WebIDL2 = require("webidl2");
 var fs = require("fs");
-var xml2js = require("xml2js");
+var xmldoc = require("xmldoc");
 
 var idlDirName = ".\\dom\\";
 var idlDir = fs.readdirSync(idlDirName);
@@ -30,22 +30,11 @@ for (var fileIndex in stubsDir) {
     fs.writeSync(1, "Stub: " + file + "\n");
 
     var stub = fs.readFileSync(stubsDirName + file, "utf8");
-    xml2js.parseString(stub, function (err, result) {
-        // no way to make it sync https://github.com/Leonidas-from-XIV/node-xml2js/issues/76
-        fs.writeSync(1, JSON.stringify(result) + "\n");
-    });
+    var stubDoc = new xmldoc.XmlDocument(stub);
+    fs.writeSync(1, JSON.stringify(stubDoc) + "\n");
 }
 
 
 // sync writes instead of console.log
 // http://stackoverflow.com/questions/6471004/how-can-i-write-blocking-in-stdout-with-node-js
 fs.fsyncSync(1);
-
-/**
- *
- * @param {Object} [p]
- * @param {HTMLDocument} [p.foo]
- */
-function f(p) {
-    document
-}
