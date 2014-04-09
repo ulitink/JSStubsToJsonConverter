@@ -1,5 +1,6 @@
 // TODO collect html4 and html5 definitions
 // https://github.com/jarib/webidl/blob/master/spec/fixtures/html5.idl - added as html5.idl
+// https://github.com/heycam/webidl
 // http://www.w3.org/TR/html/webappapis.html#idl-definitions
 // http://www.w3.org/TR/html4/
 
@@ -25,7 +26,23 @@ for (var fileIndex in idlDir) {
         var idlClass = idlClasses[treeElem.name];
         for (var treeElemMemberIndex in treeElem.members) {
             var treeElemMember = treeElem.members[treeElemMemberIndex];
-            idlClass[treeElemMember.name] = [];
+            var idlClassMember = {
+                readonly: treeElemMember.readonly,
+                type:treeElemMember.idlType.idlType,
+                kind:treeElemMember.type  === "operation" ? "method" : "property"
+            };
+            if (treeElemMember.type === "operation") {
+                idlClassMember.parameters = [];
+                for (var i=0; i < treeElemMember.arguments.length; i++) {
+                    idlClassMember.parameters.push({
+                        name:treeElemMember.arguments[i].name,
+                        optional:treeElemMember.arguments[i].optional,
+                        type:treeElemMember.arguments[i].idlType.idlType
+                    });
+                }
+
+            }
+            idlClass[treeElemMember.name] = idlClassMember;
         }
     }
     fs.writeSync(1, "IDL: " + file + "\n");
@@ -34,7 +51,7 @@ for (var fileIndex in idlDir) {
 
 var stubsDirName = "C:\\idea_src\\ultimate\\plugins\\JavaScriptLanguage\\javascript-psi-impl\\src\\com\\intellij\\lang\\javascript\\index\\predefined\\";
 var stubsDir = fs.readdirSync(stubsDirName);
-/** @type Object.<string, Object.<string, any>> */
+/** @type {Object.<string, Object.<string, *>>} */
 var stubsClasses = {};
 for (var fileIndex in stubsDir) {
     if (!stubsDir.hasOwnProperty(fileIndex)) continue;
@@ -52,7 +69,22 @@ for (var fileIndex in stubsDir) {
             else fs.writeSync(1, "Class '" + className + "' overloaded.\n");
             var classMembers = stubsClasses[className];
             topElement.eachChild(function(topElementMember) {
-                classMembers[topElementMember.attr.name] = [];
+                var classMember = {
+                    readonly:topElementMember.attr.readonly,
+                    type:topElementMember.name === "method" ? topElementMember.attr.returnType : topElementMember.attr.type,
+                    kind:topElementMember.name
+                };
+                if (topElementMember.name == "method" && topElementMember.children) {
+                    classMember.parameters = [];
+                    for (var i = 0; i < topElementMember.children.length; i++) {
+                        classMember.parameters.push({
+                            name:topElementMember.children[i].attr.name,
+                            optional:Boolean(topElementMember.children[i].attr.optional),
+                            type:topElementMember.children[i].attr.type
+                        });
+                    }
+                }
+                classMembers[topElementMember.attr.name] = classMember;
             });
         }
         else {
