@@ -95,7 +95,7 @@ for (var fileIndex in stubsDir) {
     fs.writeSync(1, JSON.stringify(lib) + "\n\n");
 }
 
-// use http://tlrobinson.net/ for result diff
+// use http://ulitink.github.io/JsonDiff/ for result diff
 fs.writeSync(1, "Stubs classes: \n " + JSON.stringify(stubsClasses) + "\n");
 fs.writeSync(1, "IDL classes: \n " + JSON.stringify(idlClasses) + "\n");
 
